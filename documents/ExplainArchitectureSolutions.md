@@ -69,3 +69,50 @@ As arquiteturas são o resultado da minha analise das necessidades **MUST HAVE**
 		- Node.js e javascript os motivos já foram explicados acima.
 		- Cron job também conhecido como **tarefa agendada** onde um determinada tarefa executa é um horário especificado. No cenário do Junta vagas que pegar vagas de outros sites novas vagas podem aparecer de um dia para outro, então pode criar um tarefa agendada para extrair os dados por exemplo as 23h que pegar as novas vagas dos sites é coloca no banco de dados
 		- Sentry essa um ferramenta que será utilizada para monitorar os erros das tarefas agendas. Como são tarefas em background você não consegui ver o erro com se vem em um api ou no frontend, então você só irá descobrir quando parar de funcionar. É ai entra o Sentry onde nós vamos capturar os erros dos jobs é envia para o Sentry que irá nós alerta o team de devs envia email por exemplo quando ocorrer um erro. 
+
+
+
+**Para rodar projeto em produção**
+
+- 1º Solução arquitetural proposta
+	- Serviços que podem ser utilizados:
+		- Frontend
+			- Vercel pois consegui rodar aplicação de forma gratuita
+		- Api
+			- Heroku pois consegui rodar aplicação de forma gratuita e também porque ele gerencia sua aplicação para você
+		- Banco de dados
+			- Mongo atlas pois permite criar um banco de dados de forma simples e gratuitamente
+		- Jobs
+			- Heroku 
+			-  Sentry pois consegui usar versão gratuita
+			  
+- 2º Solução arquitetural proposta
+	 - Serviços que podem ser utilizados:
+		- Frontend
+			- Vercel pois consegui rodar aplicação de forma gratuita
+		- Banco de dados
+			- Algolia pois tem um versão gratuita que inicialmente é interessante, simplicidade de configurar e facilidade de usar.
+		- Jobs
+			- Heroku 
+			-  Sentry pois consegui usar versão gratuita
+
+
+
+**Tecnologias complementares para usar no desenvolvimento do projeto**
+ - Git caso não saiba existe um modulo no curso **Fullstack master** sobre o tema
+ - Docker e Docker compose não é necessário saber eu irei configurar é deixar pronto. A finalidade dessa ferramenta é ajudar a rodar o banco de dados localmente na máquina de forma simples. Caso queira abre segui os links de apoio:
+	 - Artigo: https://www.linkedin.com/pulse/dicas-r%25C3%25A1pidas-docker-dockerfile-e-compose-tiago-rosa-da-costa/?trackingId=vsRgqeuheHLpSmHQ7zLwLQ%3D%3D
+	 - Vídeo: https://www.youtube.com/watch?v=Dt8hu3r7toI&fbclid=IwAR0r8YoQ34jS5cMcNcCaz1Y5EdHgk_DENv9Qe8W-Qa1O_hkkAdcU158kfwQ
+
+
+**Fluxo de git para trabalhar no projeto**
+- Branchs principais:
+	- **Master** contém o código que vai para produção
+	- **Staging** contém o código que vai para o ambiente de teste para ser válido e que depois vai para o branch **Master**
+	- **Develop** é o branch base para criar novas funcionalidades na aplicação.
+- Novas features:
+   - Executar o comando **git pull origin develop** antes de criar um novo branch **feature** para pegar  as atualizações
+	- Criar um branch baseado no **develop** onde ele irá possuir a seguinte padrão de nome **feature/nome_da_feature** é a partir dai você começa o seu desenvolvimento
+	- Quando finalizar a feature deve enviar o código para o repositório remoto é abrir uma **pull request** do seu branch feature para a **develop** onde irá conter um revisor no mínimo. 
+	- Assim que aprovado é mergeado na develop o revisor abri uma **pull request** do branch **develop** para o **staging**
+	- Aprovado e mergeado o **pull request** feito para o branch **staging** deve ser abrir uma **pull request** do branch **staging** para o **master**, porém antes de aprovar deve ser validado se está ok a nova funcionalidade no ambiente de **staging**, se está ok, aprovar **pull request** aberto para o branch **master**
