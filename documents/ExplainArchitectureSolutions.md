@@ -5,7 +5,7 @@ Analisando os requisitos do projeto abaixo tem 2 arquiteturas que estou propondo
 
 Imagem:
 
-![alt text](./documents/SolutionArchitectureProposed.png.png "Architecture proposed")
+![alt text](SolutionArchitectureProposed.png.png "Architecture proposed")
 
 As arquiteturas são o resultado da minha analise das necessidades **MUST HAVE** do projeto é também o documento tem a finalidade de dar um visão de como será o fluxo da aplicação e os componentes utilizados.
 
