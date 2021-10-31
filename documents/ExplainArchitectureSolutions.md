@@ -116,3 +116,24 @@ As arquiteturas são o resultado da minha analise das necessidades **MUST HAVE**
 	- Quando finalizar a feature deve enviar o código para o repositório remoto é abrir uma **pull request** do seu branch feature para a **develop** onde irá conter um revisor no mínimo. 
 	- Assim que aprovado é mergeado na develop o revisor abri uma **pull request** do branch **develop** para o **staging**
 	- Aprovado e mergeado o **pull request** feito para o branch **staging** deve ser abrir uma **pull request** do branch **staging** para o **master**, porém antes de aprovar deve ser validado se está ok a nova funcionalidade no ambiente de **staging**, se está ok, aprovar **pull request** aberto para o branch **master**
+
+
+
+**Estrutura inicial do projeto**
+
+Essa é a estrutura que estou propondo para código da aplicação onde irá ter o **backend** e **frontend** no mesmo repositório com a finalidade de simplificar tendo tudo em um único lugar. Obs: o **backend** e **frontend** não vou compartilhar modules, cada irá ter o seu **node_modules**
+```
+junta-vagas
+|
+| -- backend // Diretório backend tem o código do backend
+| ------- src // Todo o código fonte ficar aqui
+| ----------- routes // Diretório onde fica as rotas da aplicação
+| ----------- index.js	
+| -- frontend // Diretório frontend onde fica o código do frontend que segue a estrutura do palpitebox
+| ------- pages
+| ------- utils
+| ------- components
+| ------- public
+| ------- css
+| -- documents // São todos os documentos sobre o projeto
+```
