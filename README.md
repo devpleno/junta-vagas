@@ -85,4 +85,4 @@ Estrutura inicial do banco de dados
 ========================================
 
 
-![Estrutura inicial do banco de dados mongodb](documents/estrutura_inicial_banco_dados.png.png "estrutura do banco de dados")
+![Estrutura inicial do banco de dados mongodb](documents/estrutura_inicial_banco_dados.png "estrutura do banco de dados")
