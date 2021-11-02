@@ -43,6 +43,8 @@ Arquitetura que será utilizada no projeto:
 	
 
 **Fluxo de git para trabalhar no projeto**
+===========================================
+
 - Branchs principais:
 	- **Master** contém o código que vai para produção
 	- **Staging** contém o código que vai para o ambiente de teste para ser válido e que depois vai para o branch **Master**
@@ -59,6 +61,7 @@ Arquitetura que será utilizada no projeto:
 
 
 **Estrutura inicial do projeto**
+=================================
 
 Essa é a estrutura que estou propondo para código da aplicação onde irá ter o **backend** e **frontend** no mesmo repositório com a finalidade de simplificar tendo tudo em um único lugar. Obs: o **backend** e **frontend** não vou compartilhar modules, cada irá ter o seu **node_modules**
 ```
@@ -78,3 +81,8 @@ junta-vagas
 ```
 
 
+Estrutura inicial do banco de dados
+========================================
+
+
+![Estrutura inicial do banco de dados mongodb](documents/estrutura_inicial_banco_dados.png.png "estrutura do banco de dados")
