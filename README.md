@@ -42,4 +42,19 @@ Arquitetura que será utilizada no projeto:
 	
 	
 
+**Fluxo de git para trabalhar no projeto**
+- Branchs principais:
+	- **Master** contém o código que vai para produção
+	- **Staging** contém o código que vai para o ambiente de teste para ser válido e que depois vai para o branch **Master**
+	- **Develop** é o branch base para criar novas funcionalidades na aplicação.
+- Novas features:
+   - Executar o comando **git pull origin develop** antes de criar um novo branch **feature** para pegar  as atualizações
+	- Criar um branch baseado no **develop** onde ele irá possuir a seguinte padrão de nome **feature/nome_da_feature** é a partir dai você começa o seu desenvolvimento
+	- Quando finalizar a feature deve enviar o código para o repositório remoto é abrir uma **pull request** do seu branch feature para a **develop** onde irá conter um revisor no mínimo. 
+	- Assim que aprovado é mergeado na develop o revisor abri uma **pull request** do branch **develop** para o **staging**
+	- Aprovado e mergeado o **pull request** feito para o branch **staging** deve ser abrir uma **pull request** do branch **staging** para o **master**, porém antes de aprovar deve ser validado se está ok a nova funcionalidade no ambiente de **staging**, se está ok, aprovar **pull request** aberto para o branch **master**
+- Padrão de commit:
+	- O commit deve descrever o que você implementou
+	- A mensagem deve ser escrita em inglês para que possamos já ir treinando para futuramente atuarmos no exterior 😊
+
 
