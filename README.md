@@ -1,7 +1,7 @@
 O que é o Junta vagas:
 ========================
 
-Tem a finalidade de centralizar vagas para programador de vários sites  em um único lugar.
+Projeto com a finalidade de centralizar vagas para programador de vários sites  em um único lugar.
 
 Arquitetura que será utilizada no projeto:
 =============================================
