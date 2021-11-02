@@ -3,6 +3,11 @@ O que é o Junta vagas:
 
 Projeto com a finalidade de centralizar vagas para programador de vários sites  em um único lugar.
 
+Como usar **Github projects**
+===============================
+
+Link do vídeo: [link](documents/githuhProject.mp4)
+
 Arquitetura que será utilizada no projeto:
 =============================================
 
