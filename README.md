@@ -1,7 +1,7 @@
 O que é o Junta vagas:
 ========================
 
-Tem a finalidade de centralizar vagas para programador de vários sites  em um único lugar.
+Projeto com a finalidade de centralizar vagas para programador de vários sites  em um único lugar.
 
 Arquitetura que será utilizada no projeto:
 =============================================
@@ -86,3 +86,22 @@ Estrutura inicial do banco de dados
 
 
 ![Estrutura inicial do banco de dados mongodb](documents/estrutura_inicial_banco_dados.png "estrutura do banco de dados")
+
+
+Instruções para roda o backend na sua máquina:
+==============================================
+
+- Clonar o projeto
+- Acessar o diretório **backend**
+- Executar o comando **npm install** para instalar o modules necessários para o backend rodar
+- Executar o comando **npm run start:dev** que vai iniciar o servidor é mostrar uma mensagem com o endereço onde está rodando. OBS: Quando você roda esse comando ele está usando **nodemon** lib node.js que permite restart do servidor automáticamente quando fizer um alteração nos arquivos do projeto é salvar.
+
+
+
+Instruções para roda o frontend na sua máquina:
+==============================================
+
+- Clonar o projeto
+- Acessar o diretório **frontend**
+- Executar o comando **npm install** para instalar o modules necessários para o backend rodar
+- Executar o comando **npm run dev** que vai iniciar o servidor é mostrar uma mensagem com o endereço onde está rodando.
