@@ -58,3 +58,23 @@ Arquitetura que será utilizada no projeto:
 	- A mensagem deve ser escrita em inglês para que possamos já ir treinando para futuramente atuarmos no exterior 😊
 
 
+**Estrutura inicial do projeto**
+
+Essa é a estrutura que estou propondo para código da aplicação onde irá ter o **backend** e **frontend** no mesmo repositório com a finalidade de simplificar tendo tudo em um único lugar. Obs: o **backend** e **frontend** não vou compartilhar modules, cada irá ter o seu **node_modules**
+```
+junta-vagas
+|
+| -- backend // Diretório backend tem o código do backend
+| ------- src // Todo o código fonte ficar aqui
+| ----------- routes // Diretório onde fica as rotas da aplicação
+| ----------- index.js // Contém código que inicia servidor http usando express.js	
+| -- frontend // Diretório frontend onde fica o código do frontend que segue a estrutura do palpitebox
+| ------- pages // Onde é definida os arquivos que o nome será utiliza com rotas é irá renderizar o código dentro do arquivo.
+| ------- utils // Onde fica o código que irá auxiliar em determinadas tarefas.
+| ------- components // Onde fica código dos componentes que você irá resultar em mais de uma lugar na sua aplicação.
+| ------- public // Onde fica imagens ou conteúdos que precisam ser públicos
+| ------- css // Onde tem arquivo .css que carregar tailwind
+| -- documents // São todos os documentos sobre o projeto
+```
+
+
