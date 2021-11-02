@@ -5,7 +5,7 @@ Projeto com a finalidade de centralizar vagas para programador de vários sites 
 
 Como usar **Github projects**
 ===============================
-![Video explicando github projects](documents/githuhProject.mp4 "Vídeo explicando como usar")
+[![Video explicando github projects]](documents/githuhProject.mp4)
 
 Arquitetura que será utilizada no projeto:
 =============================================
