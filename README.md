@@ -10,9 +10,9 @@ Link do vídeo: [link](documents/githuhProject.mp4)
 
 Como usar **Github projects** explicação por texto:
 ====================================================
-- Coluna **Backlog** possui funcionalidades com o clientes pedido
-- Coluna **Blocked** são as tarefas que estão bloqueadas por algum motivo
-- Coluna **Todo** são as tarefas para serem feitas
+- Coluna **Backlog** são as funcionalidades que os clientes pedidem
+- Coluna **Blocked** são as tarefas que estão bloqueadas por algum motivo. Exemplo: precisa que outra tarefa sejá finalizado ou precisa de um informação que está faltando.
+- Coluna **To do** são as tarefas para serem feitas
 - Coluna **In progress** são as tarefas que estão em progresso
 - Coluna **Done** são as tarefas que foram finalizadas deve ser movidas para a coluna **Done**
 
