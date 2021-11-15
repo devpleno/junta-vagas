@@ -13,6 +13,8 @@ Arquitetura que será utilizada no projeto:
 
 ![Arquitetura do projeto Junta vagas](documents/solutionArchitectureSelectedToProject.png "Arquitetura do projeto")
 
+![Arquitetura do projeto Junta vagas parte de notificação email e Discord](documents/solutionNotifyPerEmailDiscord.png "Arquitetura da parte de notificação por email and Discord")
+
 
 - Tecnologias que serão utilizadas:
 	- Frontend
