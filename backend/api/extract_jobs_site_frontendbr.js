@@ -80,13 +80,11 @@ const extractJobs = (html) => {
   return jobs;
 };
 
-const getData = async () => {
+module.exports = async () => {
   const response = await axios.get(
     'https://github.com/frontendbr/vagas/issues'
   );
   const html = response.data;
-  // console.log(html);
-  console.log(extractJobs(html));
+  
+  return extractJobs(html);
 };
-
-getData();
