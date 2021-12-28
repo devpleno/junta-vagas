@@ -1,6 +1,10 @@
 const express = require("express")
 const app = express();
 
+const remoteOkCrawler = require("./removeOkCrawler")
+
+remoteOkCrawler().then(console.log)
+
 // Middleware responsable per parse data to json
 app.use(express.json())
 
