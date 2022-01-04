@@ -32,10 +32,12 @@ const extractJobs = (html) => {
   return jobs
 }
 
-
-(async () => {
-  let response = await axios.get("https://github.com/backend-br/vagas/issues?q=is%3Aissue+is%3Aopen+")
+const url = 'https://github.com/backend-br/vagas/issues?q=is%3Aissue+is%3Aopen+'
+const getJobs = async () => {
+  let response = await axios.get(url)
   let html = response.data;
   let jobs = extractJobs(html)
-  console.log(jobs)
-})()
+  return jobs
+}
+
+module.exports = getJobs
