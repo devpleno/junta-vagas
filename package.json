@@ -1,9 +1,0 @@
-{
-  "dependencies": {
-    "@sentry/node": "^6.16.1",
-    "axios": "^0.24.0",
-    "cheerio": "^1.0.0-rc.10",
-    "mongodb": "^4.2.0",
-    "node-schedule": "^2.1.0"
-  }
-}
