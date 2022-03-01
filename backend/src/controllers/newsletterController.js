@@ -38,7 +38,7 @@ async function register(req, res) {
       subject: "Confirme seu e-mail",
       html: `<h1>Confirme seu e-mail</h1>
       <p>Por favor, ative seu e-mail no link abaixo para receber nosso conteúdo.</p>
-      <a href="http://localhost:3000/newsletter/emailConfirmation/${newSub.confirmationToken}" target="_blank">Confirme seu e-mail</a>`,
+      <a href="${process.env.URL_NEWSLETTER}/emailConfirmation/${newSub.confirmationToken}" target="_blank">Confirme seu e-mail</a>`,
     };
 
     await sendEmail(message);
@@ -78,7 +78,7 @@ async function emailConfirmation(req, res) {
       res.status(201).send({ message: "Email activated successfully!" });
       return;
     } catch (err) {
-      res.status(500).send({ message: "Email activation error." });
+      res.status(409).send({ message: "Email activation error." });
       return;
     }
   }
