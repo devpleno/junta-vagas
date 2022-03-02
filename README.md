@@ -121,3 +121,4 @@ Instruções para roda o frontend na sua máquina:
 - Executar o comando **npm install** para instalar o modules necessários para o backend rodar
 - Executar o comando **npm run dev** que vai iniciar o servidor é mostrar uma mensagem com o endereço onde está rodando.
 - Executar o comando **npm run server:fake** para criar um api com dados fakes para que a pessoa responsável por desenvolver alguma funcionalidade no frontend possa usar esse dados. Esse comando irá criar api no seguinte endereço **http://localhost:5000/jobs** que vai retorna dados fakes de vagas. OBS: a lib utilizada para fazer a api fake é **https://www.npmjs.com/package/json-server**
+
