@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import axios from "axios";
 
-export default function EmailConfirmation({ API_URL }) {
+export default function EmailConfirmation() {
   const [response, setResponse] = useState({ status: null, message: "" });
   const router = useRouter();
 
@@ -11,8 +11,10 @@ export default function EmailConfirmation({ API_URL }) {
   useEffect(() => {
     if (token) {
       (async function () {
+        const URL_BASE = process.env.NEXT_PUBLIC_API_URL_NEWSLETTER;
+
         try {
-          const url = `${API_URL}/emailConfirmation/${token}`;
+          const url = `${URL_BASE}/emailConfirmation/${token}`;
 
           const { status, data } = await axios.get(url);
 
@@ -24,8 +26,6 @@ export default function EmailConfirmation({ API_URL }) {
           };
 
           setResponse(objRes);
-
-          console.error(err);
         }
       })();
     }
@@ -64,10 +64,4 @@ export default function EmailConfirmation({ API_URL }) {
       </section>
     </main>
   );
-}
-
-export async function getServerSideProps() {
-  const API_URL = process.env.API_URL_NEWSLETTER;
-
-  return { props: { API_URL } };
 }
