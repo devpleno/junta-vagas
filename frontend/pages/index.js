@@ -1,9 +1,19 @@
-import React from "react"
 
-export default () => {
+import React from "react"
+import Link from "next/link"
+
+const Index = () => {
     return (
-        <>
-            Hi next world!!!
-        </>
+        <div>                    
+            <div>                
+                <Link href='/'>
+                    <a>Sobre</a>
+                </Link> 
+                                                          
+            </div>
+       </div>
+      
     )
 }
+
+export default Index
