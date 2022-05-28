@@ -84,6 +84,10 @@ junta-vagas
 |
 | -- backend // Diretório backend tem o código do backend
 | ------- src // Todo o código fonte ficar aqui
+| ----------- controllers
+| ----------- services // Diretório onde fica o código que tem as regras de negócio do aplicativo.
+| ----------- jobs     // Diretório onde fica o código que será executado em background. Exemplo: terá um código que vai ser chamado 23h todos os dias onde os arquivos que extraem as vagas dos sites vão ser chamado para extrair as vagas e depois salvar no banco, nesse caso como é uma tarefa que é executada sem um usuário interagir com o aplicação se encaixa perfeitamente para um código que fica dentro desse diretório.
+| ----------- crawlers // Diretório onde deve ficar o código dos crawlers responsáveis por extrair as informações de vagas dos sites como: Programathor, Vulpi, RemoteOk, Github(Backend br) e Github(Frontend br).
 | ----------- routes // Diretório onde fica as rotas da aplicação
 | ----------- index.js // Contém código que inicia servidor http usando express.js	
 | -- frontend // Diretório frontend onde fica o código do frontend que segue a estrutura do palpitebox
