@@ -95,6 +95,11 @@ junta-vagas
 | -- documents // São todos os documentos sobre o projeto
 ```
 
+Regras para definir nome de arquivos no diretório backend:
+-----------------------------------------------------------
+
+- Quando for nomear arquivos deve seguir o seguinte padrão: **extractJobsSiteBackendbr.js**, **insertJobs.js** e **scheduleInsert.js**.
+
 
 Estrutura inicial do banco de dados
 ========================================
