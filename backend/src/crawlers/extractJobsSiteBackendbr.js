@@ -33,11 +33,10 @@ const extractJobs = (html) => {
 }
 
 const url = 'https://github.com/backend-br/vagas/issues?q=is%3Aissue+is%3Aopen+'
-const getJobs = async () => {
+
+module.exports = async () => {
   let response = await axios.get(url)
   let html = response.data;
   let jobs = extractJobs(html)
   return jobs
 }
-
-module.exports = getJobs

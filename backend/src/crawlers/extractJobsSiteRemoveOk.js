@@ -47,16 +47,11 @@ const extractJobs = (html) => {
 }
 
 module.exports = async () => {
-    try {
-        const response = await axios.get(URL, {
-            headers: {
-                "user-agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.85 Safari/537.36"
-            }
-        })
-        const html = response.data;
-        return extractJobs(html)
-    } catch (err) {
-        console.log(err)
-    }
-
+    const response = await axios.get(URL, {
+        headers: {
+            "user-agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.85 Safari/537.36"
+        }
+    })
+    const html = response.data;
+    return extractJobs(html)
 }

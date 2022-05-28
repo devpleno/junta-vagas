@@ -84,6 +84,10 @@ junta-vagas
 |
 | -- backend // Diretório backend tem o código do backend
 | ------- src // Todo o código fonte ficar aqui
+| ----------- controllers // Diretório onde fica o código onde pegar os parâmetros enviados na requisão, executando algum lógica como por exemplo consultar no banco de dados e depois returna a responsa. Exemplo: arquivo ./src/controllers/newsletterController.js
+| ----------- services // Diretório onde fica o código que tem as regras de negócio do aplicativo.
+| ----------- jobs     // Diretório onde fica o código que será executado em background. Exemplo: terá um código que vai ser chamado 23h todos os dias onde os arquivos que extraem as vagas dos sites vão ser chamado para extrair as vagas e depois salvar no banco, nesse caso como é uma tarefa que é executada sem um usuário interagir com o aplicação se encaixa perfeitamente para um código que fica dentro desse diretório.
+| ----------- crawlers // Diretório onde deve ficar o código dos crawlers responsáveis por extrair as informações de vagas dos sites como: Programathor, Vulpi, RemoteOk, Github(Backend br) e Github(Frontend br).
 | ----------- routes // Diretório onde fica as rotas da aplicação
 | ----------- index.js // Contém código que inicia servidor http usando express.js	
 | -- frontend // Diretório frontend onde fica o código do frontend que segue a estrutura do palpitebox
@@ -94,6 +98,12 @@ junta-vagas
 | ------- css // Onde tem arquivo .css que carregar tailwind
 | -- documents // São todos os documentos sobre o projeto
 ```
+
+Regras para definir nome de arquivos no diretório backend:
+-----------------------------------------------------------
+
+- Quando for nomear arquivos deve seguir o seguinte padrão: **extractJobsSiteBackendbr.js**, **insertJobs.js** e **scheduleInsert.js**.
+
 
 
 Estrutura inicial do banco de dados
@@ -110,6 +120,8 @@ Instruções para roda o backend na sua máquina:
 - Acessar o diretório **backend**
 - Executar o comando **npm install** para instalar o modules necessários para o backend rodar
 - Executar o comando **npm run start:dev** que vai iniciar o servidor é mostrar uma mensagem com o endereço onde está rodando. OBS: Quando você roda esse comando ele está usando **nodemon** lib node.js que permite restart do servidor automáticamente quando fizer um alteração nos arquivos do projeto é salvar.
+- Executar o comando **npm run jobs:dev** para rodar jobs que são a tarefas que são executadas em um determinado horário sem a necessidade da interação de uma pessoa.
+- (Opcional) Executar o comando **docker-compose up -d** para criar um container docker com o mongodb para você. OBS: isso ser você tiver docker instalado na sua máquina é conhece a tecnologia, caso não, apenas ignore isso comando.
 
 
 

@@ -2,13 +2,9 @@ require("dotenv").config();
 const express = require("express");
 const app = express();
 
-const { connect: connectWithDB } = require("../src/services/db");
-
-const remoteOkCrawler = require("./removeOkCrawler");
+const { connect: connectWithDB, client } = require("../src/services/db");
 
 const newsletterRouter = require("./routes/newsletter");
-
-remoteOkCrawler().then(console.log);
 
 // Middleware responsable per parse data to json
 app.use(express.json());
@@ -21,4 +17,7 @@ connectWithDB()
       console.log("Server is running address: http://localhost:3000");
     });
   })
-  .catch((err) => console.error(err));
+  .catch((err) => {
+    console.error(err)
+    client.close();
+  });
