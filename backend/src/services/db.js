@@ -1,60 +1,35 @@
 const { MongoClient } = require("mongodb");
 
-const uri = `${process.env.DB_URL}`;
-
-const client = new MongoClient(uri);
+const client = new MongoClient(process.env.DB_URL);
 
 async function connect() {
-  try {
-    await client.connect();
-  } catch (err) {
-    await client.close();
-  }
+  await client.connect();
 }
 
 async function insertOne(collectionName, doc) {
-  try {
-    const db = client.db(process.env.DB_NAME);
-    const collection = db.collection(collectionName);
-
-    const result = await collection.insertOne(doc);
-
-    return result;
-  } catch (err) {
-    await client.close();
-  }
+  const db = client.db(process.env.DB_NAME);
+  const collection = db.collection(collectionName);
+  const result = await collection.insertOne(doc);
+  return result;
 }
 
 async function findOne(collectionName, info) {
-  try {
-    const db = client.db(process.env.DB_NAME);
-
-    const collection = db.collection(collectionName);
-
-    const result = await collection.findOne({ ...info });
-
-    return result;
-  } catch (err) {
-    await client.close();
-  }
+  const db = client.db(process.env.DB_NAME);
+  const collection = db.collection(collectionName);
+  const result = await collection.findOne({ ...info });
+  return result;
 }
 
 async function updateOne(collectionName, searchFor, updateTo) {
-  try {
-    const db = client.db(process.env.DB_NAME);
-    const collection = db.collection(collectionName);
-
-    const result = await collection.updateOne(
-      { ...searchFor },
-      {
-        $set: { ...updateTo },
-      }
-    );
-
-    return result;
-  } catch (err) {
-    await client.close();
-  }
+  const db = client.db(process.env.DB_NAME);
+  const collection = db.collection(collectionName);
+  const result = await collection.updateOne(
+    { ...searchFor },
+    {
+      $set: { ...updateTo },
+    }
+  );
+  return result;
 }
 
-module.exports = { connect, insertOne, findOne, updateOne };
+module.exports = { client, connect, insertOne, findOne, updateOne };

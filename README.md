@@ -120,6 +120,8 @@ Instruções para roda o backend na sua máquina:
 - Acessar o diretório **backend**
 - Executar o comando **npm install** para instalar o modules necessários para o backend rodar
 - Executar o comando **npm run start:dev** que vai iniciar o servidor é mostrar uma mensagem com o endereço onde está rodando. OBS: Quando você roda esse comando ele está usando **nodemon** lib node.js que permite restart do servidor automáticamente quando fizer um alteração nos arquivos do projeto é salvar.
+- Executar o comando **npm run jobs:dev** para rodar jobs que são a tarefas que são executadas em um determinado horário sem a necessidade da interação de uma pessoa.
+- (Opcional) Executar o comando **docker-compose up -d** para criar um container docker com o mongodb para você. OBS: isso ser você tiver docker instalado na sua máquina é conhece a tecnologia, caso não, apenas ignore isso comando.
 
 
 
