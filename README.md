@@ -108,6 +108,7 @@ Instruções para roda o backend na sua máquina:
 
 - Clonar o projeto
 - Acessar o diretório **backend**
+- Create **.env** file based **.env.example** file in root the directory.
 - Executar o comando **npm install** para instalar o modules necessários para o backend rodar
 - Executar o comando **npm run start:dev** que vai iniciar o servidor é mostrar uma mensagem com o endereço onde está rodando. OBS: Quando você roda esse comando ele está usando **nodemon** lib node.js que permite restart do servidor automáticamente quando fizer um alteração nos arquivos do projeto é salvar.
 
@@ -118,6 +119,7 @@ Instruções para roda o frontend na sua máquina:
 
 - Clonar o projeto
 - Acessar o diretório **frontend**
+- Create **.env** file based **.env.example** file in root the directory.
 - Executar o comando **npm install** para instalar o modules necessários para o backend rodar
 - Executar o comando **npm run dev** que vai iniciar o servidor é mostrar uma mensagem com o endereço onde está rodando.
 - Executar o comando **npm run server:fake** para criar um api com dados fakes para que a pessoa responsável por desenvolver alguma funcionalidade no frontend possa usar esse dados. Esse comando irá criar api no seguinte endereço **http://localhost:5000/jobs** que vai retorna dados fakes de vagas. OBS: a lib utilizada para fazer a api fake é **https://www.npmjs.com/package/json-server**
