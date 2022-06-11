@@ -7,7 +7,7 @@ const Footer = () => {
         <div className='bg-gray-700 px-4'>
             <div className='container mx-auto text-center font-bold text-white px-4'>  
                 Projeto desemvolvidor por:
-                equipe do juntas vagas <br />
+                equipe do juntas Vagas <br />
                 <a href='www.linkedin.com/in/carlosnasciemnto'>Linkedin</a>/
                 <a href='https://github.com/Carlos-Nasciemnto'>Github</a>                
             </div>          
