@@ -18,11 +18,15 @@ const Header = () => {
                   </Link>
                   
                 <Link href='/about'>
-                    <a className='px-2 hover:underline'>Sobre</a>
+                    <a className='px-2 hover:underline'>About</a>
                 </Link>                
             
                 <Link href='/email'>
                     <a className='px-2 hover:underline'>Email</a>
+                </Link>
+
+                <Link href='/convite'>
+                    <a className='px-2 hover:underline'>Discord</a>
                 </Link>
              </div> 
      </div>
