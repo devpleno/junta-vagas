@@ -7,7 +7,7 @@ const Index = () => {
         <div>                    
             <div>                
                 <Link href='/'>
-                    <a>Sobre</a>
+                    <a></a>
                 </Link> 
                                                           
             </div>
