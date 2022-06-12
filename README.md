@@ -14,6 +14,7 @@ Como usar **Github projects** explicação por texto:
 - Coluna **Blocked** são as tarefas que estão bloqueadas por algum motivo. Exemplo: precisa que outra tarefa sejá finalizado ou precisa de um informação que está faltando.
 - Coluna **To do** são as tarefas para serem feitas
 - Coluna **In progress** são as tarefas que estão em progresso
+- Coluna **Validate** as tarefas deve ser movidas para essa coluna quando elas foram finalizadas e você abri um PR para que seja aprovado assim que for aprovada que aprovar move a tarefa da coluna **Done**. OBS: o nome **Validate** por se genérico permite não só validar o código da PR's mas também permitirá caso exista um servidor de teste onde é adicionada as novas funcionalidades para validar se está ok antes de ir para produção.
 - Coluna **Done** são as tarefas que foram finalizadas deve ser movidas para a coluna **Done**
 
 Arquitetura que será utilizada no projeto:
