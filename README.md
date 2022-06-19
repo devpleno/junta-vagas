@@ -14,6 +14,7 @@ Como usar **Github projects** explicação por texto:
 - Coluna **Blocked** são as tarefas que estão bloqueadas por algum motivo. Exemplo: precisa que outra tarefa sejá finalizado ou precisa de um informação que está faltando.
 - Coluna **To do** são as tarefas para serem feitas
 - Coluna **In progress** são as tarefas que estão em progresso
+- Coluna **Validate** as tarefas deve ser movidas para essa coluna quando elas foram finalizadas, então a pessoa que fez a tarefa deve abrir uma PR para que seja analisada a tarefa é se tudo estiver ok irá ser aprovado e assim que for aprovada o aprovador move a tarefa da coluna **Done**. OBS: o nome **Validate** por ser genérico permite não só validar o código da PR's mas também permitirá se caso exista um servidor de **teste** onde é adicionada as novas funcionalidades para validar se está ok antes de ir para produção.
 - Coluna **Done** são as tarefas que foram finalizadas deve ser movidas para a coluna **Done**
 
 Arquitetura que será utilizada no projeto:
@@ -118,6 +119,7 @@ Instruções para roda o backend na sua máquina:
 
 - Clonar o projeto
 - Acessar o diretório **backend**
+- Create **.env** file based **.env.example** file in root the directory.
 - Executar o comando **npm install** para instalar o modules necessários para o backend rodar
 - Executar o comando **npm run start:dev** que vai iniciar o servidor é mostrar uma mensagem com o endereço onde está rodando. OBS: Quando você roda esse comando ele está usando **nodemon** lib node.js que permite restart do servidor automáticamente quando fizer um alteração nos arquivos do projeto é salvar.
 - Executar o comando **npm run jobs:dev** para rodar jobs que são a tarefas que são executadas em um determinado horário sem a necessidade da interação de uma pessoa.
@@ -130,6 +132,7 @@ Instruções para roda o frontend na sua máquina:
 
 - Clonar o projeto
 - Acessar o diretório **frontend**
+- Create **.env** file based **.env.example** file in root the directory.
 - Executar o comando **npm install** para instalar o modules necessários para o backend rodar
 - Executar o comando **npm run dev** que vai iniciar o servidor é mostrar uma mensagem com o endereço onde está rodando.
 - Executar o comando **npm run server:fake** para criar um api com dados fakes para que a pessoa responsável por desenvolver alguma funcionalidade no frontend possa usar esse dados. Esse comando irá criar api no seguinte endereço **http://localhost:5000/jobs** que vai retorna dados fakes de vagas. OBS: a lib utilizada para fazer a api fake é **https://www.npmjs.com/package/json-server**
