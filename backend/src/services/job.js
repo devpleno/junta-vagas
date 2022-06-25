@@ -1,4 +1,4 @@
-const { insertOne } = require("./db")
+const { insertOne, find } = require("./db.js")
 
 const insertJobs = async (jobs) => {
     return Promise.all(
@@ -17,4 +17,8 @@ const insertJobs = async (jobs) => {
     )
 }
 
-module.exports = { insertJobs }
+const getJobsByCondition = async (condition) => {
+    return await find("jobs", { ...condition });
+}
+
+module.exports = { insertJobs, getJobsByCondition }
