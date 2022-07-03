@@ -27,9 +27,16 @@ async function updateOne(collectionName, searchFor, updateTo) {
     { ...searchFor },
     {
       $set: { ...updateTo },
-    }
+    },
   );
   return result;
 }
 
-module.exports = { client, connect, insertOne, findOne, updateOne };
+async function find(collectionName, info) {
+  const db = client.db(process.env.DB_NAME);
+  const collection = db.collection(collectionName);
+  const result = await collection.find({ ...info }).toArray();
+  return result;
+}
+
+module.exports = { client, connect, insertOne, findOne, updateOne, find };
