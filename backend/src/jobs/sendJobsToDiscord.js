@@ -26,33 +26,66 @@ module.exports = async () => {
       return;
     }
 
+    const sleep = (seconds) => {
+      return new Promise((resolve, reject) => {
+        setTimeout(() => resolve(), seconds * 1000);
+      });
+    };
+
+    const sendMessage = async (content) => {
+      try {
+        await sleep(3);
+
+        const params = {
+          username: process.env.USERNAME_DISCORD,
+          content,
+        };
+
+        const config = {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          data: JSON.stringify(params),
+          url: process.env.URL_WEBHOOK_DISCORD,
+        };
+
+        await axios.post(config);
+      } catch (e) {
+        console.log(e);
+      }
+    };
+
     let content = "";
-    jobs.forEach((job) => {
-      content += `Vaga postada em ${job.postedAt.toLocaleDateString()} na plataforma ${
-        job.platform
-      }\n`;
+    let counter = 0;
+    const requests = [];
+
+    const jobsSize = jobs.length;
+    const limit = jobsSize % 2 === 0 ? 2 : 1;
+    const maxCaracters = 2000;
+
+    for (let job of jobs) {
+      let contentSize = content.length;
+      let canSend = counter === limit && contentSize <= maxCaracters;
+
+      if (canSend) {
+        requests.push(sendMessage(content));
+        content = "";
+        counter = 0;
+      }
+
       content += `Titulo: ${job.title}\n`;
-      content += `Empresa: ${job.company}\n`;
-      content += `Localização: ${job.location}\n`;
-      content += `Tecnologias: ${job.technologies?.join(", ")}\n`;
+      content += `Empresa: ${job.company || "Não foi definida"}\n`;
+      content += `Localização: ${job.location || "Não foi definida"}\n`;
+      content += `Tecnologias: ${
+        job.technologies?.join(", ") || "Não foram definidas"
+      }\n`;
       content += `Link: ${job.link}\n\n\n`;
-    });
 
-    const params = {
-      username: process.env.USERNAME_DISCORD,
-      content,
-    };
+      counter++;
+    }
 
-    const config = {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      data: JSON.stringify(params),
-      url: process.env.URL_WEBHOOK_DISCORD,
-    };
-
-    await axios.post(config);
+    await Promise.all(requests);
     console.log("Finished sending jobs to discord");
   } catch (error) {
     console.log(error);
