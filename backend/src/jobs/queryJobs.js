@@ -1,5 +1,3 @@
-require("dotenv").config()
-
 const { connect, client: connectionDB, findOne } = require("../services/db")
 
 const getToday = () => {
@@ -25,10 +23,6 @@ module.exports = {
   queryData: async (connectionDB) => {
     const db = connectionDB.db(process.env.DB_NAME)
     const collection = db.collection("jobs")
-    connect()
-      .then(async () => {
-        findOne('jobs', queryJobs)
-      })
     return queryJobs(collection)
   }
 }
