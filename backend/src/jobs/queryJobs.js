@@ -10,12 +10,12 @@ const queryDate = getToday()
 const queryJobs = async coll => {
   const cursorJobs = await coll.find(
     {
-      "postedAt": {
+      /*"postedAt": {
         $gte: `${queryDate} 00:00:00`
-      }
+      }*/
     }).toArray()
 
-  cursorJobs.forEach(doc => { console.log(doc) })
+  //cursorJobs.forEach(doc => { console.log(doc) })
   return cursorJobs
 }
 
