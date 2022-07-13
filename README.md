@@ -142,7 +142,12 @@ Instruções para roda o frontend na sua máquina:
 
 - Clonar o projeto
 - Acessar o diretório **frontend**
-- Create **.env** file based **.env.example** file in root the directory.
+- Criar arquivo **.env** baseado no arquivo **.env.example** na raiz do diretório **backend**.
+- Deve ser adicionado o seguinte conteúdo no arquivo .env:
+```
+NEXT_PUBLIC_API_URL_NEWSLETTER=url_api_backend // Exemplo: http://localhost:3000
+NEXT_PUBLIC_LINK_INVITE_DISCORD=url_link_que_nao_expira_convite_discord_
+```
 - Executar o comando **npm install** para instalar o modules necessários para o backend rodar
 - Executar o comando **npm run dev** que vai iniciar o servidor é mostrar uma mensagem com o endereço onde está rodando.
 - Executar o comando **npm run server:fake** para criar um api com dados fakes para que a pessoa responsável por desenvolver alguma funcionalidade no frontend possa usar esse dados. Esse comando irá criar api no seguinte endereço **http://localhost:5000/jobs** que vai retorna dados fakes de vagas. OBS: a lib utilizada para fazer a api fake é **https://www.npmjs.com/package/json-server**
