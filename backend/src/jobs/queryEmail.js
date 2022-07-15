@@ -1,18 +1,9 @@
-const { connect, client: connectionDB, findOne } = require("../services/db")
-
-const queryData = async coll => {
-  const cursorEmail = await coll.find(
-    {
-      "status": true
-    }).toArray()
-
-  return cursorEmail
-}
+const getEmailsConfirmed = require("../services/newsletter")
 
 module.exports = {
   queryData: async (connectionDB) => {
     const db = connectionDB.db(process.env.DB_NAME)
     const collection = db.collection("newsletters")
-    return queryData(collection)
+    return getEmailsConfirmed(collection)
   }
 }

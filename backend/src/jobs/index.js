@@ -12,14 +12,14 @@ rule.tz = 'America/Sao_Paulo'
 
 connect()
     .then(() => {
+        schedule.scheduleJob(rule, async () => {
+            try {
+                await insertJobsExtractedInDb()
+            } catch (err) {
+                console.log(err)
+            }
+        })
         sendJobsTodayByEmail()
-        /*   schedule.scheduleJob(rule, async () => {
-               try {
-                   await insertJobsExtractedInDb()
-               } catch (err) {
-                   console.log(err)
-               }
-           })*/
     })
 
 
