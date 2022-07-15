@@ -7,7 +7,7 @@ const Convite = () => {
       <div className='w-full h-screen flex  items-center justify-center'>
           <a className="container text-3xl font-bold
               text-blue-300 self-center py-20 md:text-6xl" 
-              href={process.env.NEXT_PUBLIC_API_URL_NEWSLETTER} target='_blank'>
+              href={process.env.NEXT_PUBLIC_LINK_INVITE_DISCORD} target='_blank'>
             Clique para acessar o Discord
           </a>
       </div>
