@@ -3,7 +3,7 @@ require("dotenv").config();
 const { connect } = require("../services/db");
 const schedule = require('node-schedule')
 const insertJobsExtractedInDb = require("./insertJobsExtractedInDb")
-const sendJobsTodayByEmail = require("./sendJobsTodayByEmail.js")
+const msgSender = require("./sendJobsTodayByEmail.js")
 
 const rule = new schedule.RecurrenceRule()
 rule.hour = 23
@@ -19,7 +19,7 @@ connect()
                 console.log(err)
             }
         })
-        sendJobsTodayByEmail()
+        msgSender.sendJobsTodayByEmail()
     })
 
 

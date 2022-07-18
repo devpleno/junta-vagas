@@ -1,12 +1,12 @@
 const { client } = require("../services/db")
-const queryJobs = require('./queryJobs')
-const queryEmail = require('./queryEmail')
-const email = require('../services/email')
+const jobsToday = require("../services/job")
+const newsletter = require("../services/newsletter")
+const email = require("../services/email")
 
 const sendJobsTodayByEmail = async () => {
   const msgFrom = 'teste@gmail.com'
   const subject = 'Vagas do dia'
-  const jobs = await queryJobs.queryData(client)
+  const jobs = await jobsToday.findJobsToday(client)
   const emailHtml = `<style>
                      @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap');
                       p {
@@ -30,9 +30,9 @@ const sendJobsTodayByEmail = async () => {
   const message = emailHtml
     + '<br/><br/>' + linkJobsHtml
 
-  const msgTo = await queryEmail.queryData(client)
+  const msgTo = await newsletter.getEmailsConfirmed(client)
 
-  msgTo.forEach(msg => {
+  msgTo.map(msg => {
     email.sendEmail(
       {
         from: msgFrom,
@@ -44,7 +44,7 @@ const sendJobsTodayByEmail = async () => {
   })
 }
 
-module.exports = sendJobsTodayByEmail
+module.exports = { sendJobsTodayByEmail }
 
 
 
