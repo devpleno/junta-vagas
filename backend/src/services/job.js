@@ -1,4 +1,4 @@
-const { insertOne } = require("./db")
+const { insertOne, client } = require("./db")
 
 const insertJobs = async (jobs) => {
     return Promise.all(
@@ -17,4 +17,24 @@ const insertJobs = async (jobs) => {
     )
 }
 
-module.exports = { insertJobs }
+const findJobsToday = async () => {
+
+    const getToday = () => {
+        const today = new Date()
+        return today.getFullYear() + '-' + 0 + (today.getMonth() + 1) + '-' + today.getDate()
+    }
+
+    const dateFilterJobs = getToday()
+
+    const db = client.db(process.env.DB_NAME)
+    const coll = db.collection("jobs")
+    const result = await coll.find({
+        "postedAt":
+            { $gte: `${dateFilterJobs} 00:00:00` }
+    }).toArray()
+
+    return result
+
+}
+
+module.exports = { insertJobs, findJobsToday }

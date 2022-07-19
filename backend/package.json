@@ -15,14 +15,12 @@
   "dependencies": {
     "axios": "^0.24.0",
     "cheerio": "^1.0.0-rc.10",
-    "dotenv": "^16.0.0",
+    "dotenv": "^16.0.1",
     "express": "^4.17.1",
     "mongodb": "^4.4.0",
     "node-schedule": "^2.1.0",
     "nodemailer": "^6.7.2",
+    "nodemon": "^2.0.19",
     "uuid": "^8.3.2"
-  },
-  "devDependencies": {
-    "nodemon": "^2.0.14"
   }
 }
