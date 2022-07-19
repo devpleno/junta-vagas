@@ -6,6 +6,7 @@ const email = require("../services/email")
 const sendJobsTodayByEmail = async () => {
   const msgFrom = 'teste@gmail.com'
   const subject = 'Vagas do dia'
+  console.log("Getting jobs today")
   const jobs = await jobsToday.findJobsToday(client)
   const emailHtml = `<style>
                      @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap');
@@ -22,6 +23,9 @@ const sendJobsTodayByEmail = async () => {
                     </style>
                     <p>Olá!</p><br/>
                     <p>Seguem as vagas do dia que o Junta Vagas separou para você: <p>`
+
+  console.log("Creating email with jobs today")
+
   const linkJobsHtml = jobs.map(job => {
     return `<a href=${job.link}>${job.title}</a>`
 
@@ -30,8 +34,10 @@ const sendJobsTodayByEmail = async () => {
   const message = emailHtml
     + '<br/><br/>' + linkJobsHtml
 
+  console.log("Getting emails confirmed to send jobs today")
   const msgTo = await newsletter.getEmailsConfirmed(client)
 
+  console.log("Sending emails with jobs today to each email confirmed")
   msgTo.map(msg => {
     email.sendEmail(
       {
@@ -42,6 +48,9 @@ const sendJobsTodayByEmail = async () => {
       }
     )
   })
+
+  console.log("Finished process notify jobs today per email")
+
 }
 
 module.exports = { sendJobsTodayByEmail }
