@@ -17,24 +17,41 @@ const insertJobs = async (jobs) => {
     )
 }
 
+const getJobsCollection = () => {
+    const db = client.db(process.env.DB_NAME);
+    const jobsColl = db.collection("jobs");    
+    return jobsColl;
+}
+
 const findJobsToday = async () => {
 
     const getToday = () => {
-        const today = new Date()
-        return today.getFullYear() + '-' + 0 + (today.getMonth() + 1) + '-' + today.getDate()
+        const today = new Date();
+        return today.getFullYear() + '-' + 0 + (today.getMonth() + 1) + '-' + today.getDate();
     }
 
-    const dateFilterJobs = getToday()
-
-    const db = client.db(process.env.DB_NAME)
-    const coll = db.collection("jobs")
+    const dateFilterJobs = getToday();
+    const coll = getJobsCollection();
     const result = await coll.find({
         "postedAt":
             { $gte: `${dateFilterJobs} 00:00:00` }
-    }).toArray()
+    }).toArray();
 
-    return result
+    return result;
 
 }
 
-module.exports = { insertJobs, findJobsToday }
+const paginatingJobs = async (pageSize, pageNum) => {
+    const coll = await getJobsCollection();
+    
+    const result = await coll.find({})
+                            .skip(pageNum > 0 ? ((pageNum - 1) * pageSize) : 0)
+                            .limit(pageSize)
+                            .forEach (job => {
+                                console.log(job)
+                            })
+                            .toArray();
+    return result;
+}
+
+module.exports = { insertJobs, findJobsToday, paginatingJobs }
