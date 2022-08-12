@@ -41,15 +41,13 @@ const findJobsToday = async () => {
 
 }
 
-const paginatingJobs = async (pageSize, pageNum) => {
+const paginatingJobs = async (pageNum, pageSize) => {
     const coll = await getJobsCollection();
     
     const result = await coll.find({})
+                            .sort({postedAt: -1})
                             .skip(pageNum > 0 ? ((pageNum - 1) * pageSize) : 0)
                             .limit(pageSize)
-                            .forEach (job => {
-                                console.log(job)
-                            })
                             .toArray();
     return result;
 }
