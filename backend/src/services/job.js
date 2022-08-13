@@ -47,7 +47,7 @@ const paginatingJobs = async (pageNum, pageSize) => {
     const result = await coll.find({})
                             .sort({postedAt: -1})
                             .skip(pageNum > 0 ? ((pageNum - 1) * pageSize) : 0)
-                            .limit(pageSize)
+                            .limit(parseInt(pageSize))
                             .toArray();
     return result;
 }

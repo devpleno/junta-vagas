@@ -1,8 +1,8 @@
 const express = require("express");
 const router = express.Router();
 
-const { jobsController } = require("../controllers/jobsController");
+const { getJobsPaginated } = require("../controllers/jobsController");
 
-router.get("/", jobsController);
+router.get("/", getJobsPaginated);
 
 module.exports = router;
