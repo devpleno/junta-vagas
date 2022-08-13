@@ -6,7 +6,7 @@ async function connect() {
   await client.connect();
 }
 
-async function insertOne(collectionName, doc) {
+async function insertOne(collectionName, doc) {  
   const db = client.db(process.env.DB_NAME);
   const collection = db.collection(collectionName);
   const result = await collection.insertOne(doc);
