@@ -1,4 +1,4 @@
-const { insertOne, client } = require("./db")
+const { insertOne, client, find } = require("./db")
 
 const insertJobs = async (jobs) => {
     return Promise.all(
@@ -15,6 +15,10 @@ const insertJobs = async (jobs) => {
             })
         })
     )
+}
+
+const getJobsByCondition = async (condition) => {
+    return await find("jobs", { ...condition });
 }
 
 const getJobsCollection = () => {
@@ -52,4 +56,4 @@ const paginatingJobs = async (pageNum, pageSize) => {
     return result;
 }
 
-module.exports = { insertJobs, findJobsToday, paginatingJobs }
+module.exports = { insertJobs, findJobsToday, paginatingJobs, getJobsByCondition }
