@@ -1,8 +1,7 @@
 const { getJobsByCondition } = require("./../services/job.js");
-const axios = require("axios");
+const { sendMessage } = require("../utils/discord.js");
 
 module.exports = async () => {
-  try {
     console.log("Starting getting jobs");
     const initialISODate = new Date(
       new Date().setHours(-3, 0, 0, 0),
@@ -13,8 +12,8 @@ module.exports = async () => {
 
     const condition = {
       $and: [
-        { postedAt: { $gte: new Date(initialISODate) } },
-        { postedAt: { $lte: new Date(finalISODate) } },
+        { postedAt: { $gte: initialISODate } },
+        { postedAt: { $lte: finalISODate } },
       ],
     };
 
@@ -26,68 +25,36 @@ module.exports = async () => {
       return;
     }
 
-    const sleep = (seconds) => {
-      return new Promise((resolve, reject) => {
-        setTimeout(() => resolve(), seconds * 1000);
-      });
-    };
-
-    const sendMessage = async (content) => {
-      try {
-        await sleep(3);
-
-        const params = {
-          username: process.env.USERNAME_DISCORD,
-          content,
-        };
-
-        const config = {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          data: JSON.stringify(params),
-          url: process.env.URL_WEBHOOK_DISCORD,
-        };
-
-        await axios.post(config);
-      } catch (e) {
-        console.log(e);
-      }
-    };
-
     let content = "";
-    let counter = 0;
-    const requests = [];
-
-    const jobsSize = jobs.length;
-    const limit = jobsSize % 2 === 0 ? 2 : 1;
     const maxCaracters = 2000;
 
     for (let job of jobs) {
       let contentSize = content.length;
-      let canSend = counter === limit && contentSize <= maxCaracters;
 
-      if (canSend) {
-        requests.push(sendMessage(content));
-        content = "";
-        counter = 0;
-      }
-
-      content += `Titulo: ${job.title}\n`;
-      content += `Empresa: ${job.company || "Não foi definida"}\n`;
-      content += `Localização: ${job.location || "Não foi definida"}\n`;
-      content += `Tecnologias: ${
+      let newContent = ""
+      newContent += `Titulo: ${job.title}\n`;
+      newContent += `Empresa: ${job.company || "Não foi definida"}\n`;
+      newContent += `Localização: ${job.location || "Não foi definida"}\n`;
+      newContent += `Tecnologias: ${
         job.technologies?.join(", ") || "Não foram definidas"
       }\n`;
-      content += `Link: ${job.link}\n\n\n`;
+      newContent += `Link: ${job.link}\n\n\n`;
 
-      counter++;
+      if (contentSize >= maxCaracters) {
+        await sendMessage(content)
+        content = ""
+      } else if ((contentSize + newContent.length) > maxCaracters) {
+        await sendMessage(content)
+        content = newContent
+      } else {
+        content += newContent;
+      }
+
     }
 
-    await Promise.all(requests);
+    if (content.length > 0) {
+      await sendMessage(content)
+    }
+
     console.log("Finished sending jobs to discord");
-  } catch (error) {
-    console.log(error);
-  }
 };
