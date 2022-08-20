@@ -4,6 +4,7 @@ const { connect } = require("../services/db");
 const schedule = require('node-schedule')
 const insertJobsExtractedInDb = require("./insertJobsExtractedInDb")
 const sendJobsToDiscord = require("./sendJobsToDiscord");
+const { sendJobsTodayByEmail } = require("./sendJobsTodayByEmail.js")
 
 const rule = new schedule.RecurrenceRule()
 rule.hour = 23
@@ -11,15 +12,16 @@ rule.minute = 30
 rule.tz = 'America/Sao_Paulo'
 
 connect()
-    .then(() => {
-        schedule.scheduleJob(rule, async () => {
+    .then(async () => {
+        // schedule.scheduleJob(rule, async () => {
             try {
                 await insertJobsExtractedInDb()
                 await sendJobsToDiscord();
+                // await sendJobsTodayByEmail()
             } catch (err) {
                 console.log(err)
             }
-        })
+        // })
     })
 
 

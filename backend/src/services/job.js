@@ -1,4 +1,4 @@
-const { insertOne, find } = require("./db.js")
+const { insertOne, client } = require("./db")
 
 const insertJobs = async (jobs) => {
     return Promise.all(
@@ -21,4 +21,39 @@ const getJobsByCondition = async (condition) => {
     return await find("jobs", { ...condition });
 }
 
-module.exports = { insertJobs, getJobsByCondition }
+const getJobsCollection = () => {
+    const db = client.db(process.env.DB_NAME);
+    const jobsColl = db.collection("jobs");    
+    return jobsColl;
+}
+
+const findJobsToday = async () => {
+
+    const getToday = () => {
+        const today = new Date();
+        return today.getFullYear() + '-' + 0 + (today.getMonth() + 1) + '-' + today.getDate();
+    }
+
+    const dateFilterJobs = getToday();
+    const coll = getJobsCollection();
+    const result = await coll.find({
+        "postedAt":
+            { $gte: `${dateFilterJobs} 00:00:00` }
+    }).toArray();
+
+    return result;
+
+}
+
+const paginatingJobs = async (pageNum, pageSize) => {
+    const coll = await getJobsCollection();
+    
+    const result = await coll.find({})
+                            .sort({postedAt: -1})
+                            .skip(pageNum > 0 ? ((pageNum - 1) * pageSize) : 0)
+                            .limit(parseInt(pageSize))
+                            .toArray();
+    return result;
+}
+
+module.exports = { insertJobs, findJobsToday, paginatingJobs, getJobsByConditio }
