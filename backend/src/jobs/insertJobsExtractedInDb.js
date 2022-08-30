@@ -1,6 +1,7 @@
 const extractJobsSitesBackendBr = require("../crawlers/extractJobsSiteBackendbr")
 const extractJobsSiteFrontendBr = require("../crawlers/extractJobsSiteFrontendbr");
 const extractJobsSiteRemoveOk = require("../crawlers/extractJobsSiteRemoveOk")
+const extractJobsSiteBackendStartec = require("../crawlers/extractJobsSiteBackendStartec")
 const { insertJobs } = require("../services/job")
 
 module.exports = async () => {
@@ -8,7 +9,8 @@ module.exports = async () => {
   const results = await Promise.all([
     extractJobsSiteFrontendBr(),
     extractJobsSiteRemoveOk(),
-    extractJobsSitesBackendBr()
+    extractJobsSitesBackendBr(),
+    extractJobsSiteBackendStartec()
   ])
   const jobs = [...results[0], ...results[1], ...results[2]]
   console.log("Init insertation the jobs extracted in database")
