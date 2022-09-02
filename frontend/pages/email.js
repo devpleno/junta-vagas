@@ -17,7 +17,7 @@ const Email = () => {
                 <img class="h-20 w-20"
                     src="https://raw.githubusercontent.com/sefyudem/Responsive-Login-Form/master/img/avatar.svg"/>
             </div>
-            <h2 class="text-3xl text-center text-gray-700 mb-4">Informe seu Email, Receber vaga.</h2>
+            <h2 class="text-2xl text-center text-gray-700 mb-4">Informe seu Email, Receber vaga.</h2>
             <div class="px-12 pb-10">
                 <div class="w-full mb-2">
                     <div class="flex items-center">
@@ -37,7 +37,7 @@ const Email = () => {
         </form>
     </div>
 
-     </div>   
+    </div>   
   )
 }
 

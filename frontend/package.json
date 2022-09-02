@@ -14,8 +14,8 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "axios": "^0.26.0",
-    "next": "^12.0.7",
+    "axios": "^0.27.2",
+    "next": "^12.0.8-canary.20",
     "postcss-import": "^14.0.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",

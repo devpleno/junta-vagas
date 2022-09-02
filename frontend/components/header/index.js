@@ -12,8 +12,8 @@ const Header = () => {
                </div>
          </div>
      <div className='bg-gray-300 p-4 shadow-md'>
-              <div> 
-                  <Link href='/home'>
+            <div> 
+                  <Link href='/'>
                       <a className='px-2 hover:underline'>Home</a>
                   </Link>
                   
@@ -27,6 +27,10 @@ const Header = () => {
 
                 <Link href='/convite'>
                     <a className='px-2 hover:underline'>Discord</a>
+                </Link>
+
+                <Link href='/list'>
+                    <a className='px-2 hover:underline'>List</a>
                 </Link>
              </div> 
      </div>

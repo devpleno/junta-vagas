@@ -10,7 +10,7 @@ const Layout = ({children}) => {
             <div className="container mx-auto">
                 {children} 
             </div>
-            <Footer/>
+            <Footer />
       </div>  
 
     ) 
