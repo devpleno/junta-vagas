@@ -3,6 +3,7 @@ require("dotenv").config();
 const { connect } = require("../services/db");
 const schedule = require('node-schedule')
 const insertJobsExtractedInDb = require("./insertJobsExtractedInDb")
+const sendJobsToDiscord = require("./sendJobsToDiscord");
 const { sendJobsTodayByEmail } = require("./sendJobsTodayByEmail.js")
 
 const rule = new schedule.RecurrenceRule()
@@ -12,14 +13,15 @@ rule.tz = 'America/Sao_Paulo'
 
 connect()
     .then(async () => {
-        schedule.scheduleJob(rule, async () => {
+        // schedule.scheduleJob(rule, async () => {
             try {
                 await insertJobsExtractedInDb()
-                await sendJobsTodayByEmail()
+                await sendJobsToDiscord();
+                // await sendJobsTodayByEmail()
             } catch (err) {
                 console.log(err)
             }
-        })
+        // })
     })
 
 
