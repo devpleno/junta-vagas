@@ -3,8 +3,14 @@ const axios = require("axios")
 async function getJobs() {
   let response = await axios.get("https://startec-api-production.up.railway.app/v2/jobs/list/all")
   let vagas = response.data;
+  const todayDate = new Date();
+  todayDate.setHours(0)
+  todayDate.setMinutes(0)
+  todayDate.setSeconds(0)
 
-  var job = vagas.jobs.map((job) => {
+  var job = vagas.jobs.filter(job => {
+    return new Date(job.created_at).getTime() >= todayDate.getTime() 
+  }).map((job) => {
 
     const skills = job.jobSkills.map(skill => {
       return skill.name
@@ -19,5 +25,8 @@ async function getJobs() {
       logo: job.companyLogo
     }
   })
+
+  return job;
 }
-return getJobs
+
+module.exports = getJobs
