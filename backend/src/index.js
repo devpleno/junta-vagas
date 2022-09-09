@@ -1,22 +1,8 @@
 require("dotenv").config();
 const express = require("express");
-const app = express();
 const cors = require("cors");
-
-const allowedCorsDomains = process.env.CORS_DOMAINS || "";
-const whitelist = allowedCorsDomains.split(",").map(item => item.trim());
-
-const corsOptions = {
-  origin: (origin, callback) => {
-    if (!origin || whitelist.indexOf(origin) !== -1) {
-      callback(null, true);
-    }else{
-      callback(new Error("Not allowed by CORS")) ;  
-    }
-  },
-  credentials: true,
-}
-app.use(cors(corsOptions));
+const app = express();
+app.use(cors('*'));
 
 const { connect: connectWithDB, client } = require("../src/services/db");
 
