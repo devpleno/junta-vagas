@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import axios from "axios"
 
 const Index = (props) => {
@@ -29,22 +29,34 @@ const Index = (props) => {
         // COMPONENTE EXIBINDO AS ANTIGAS VAGAS E AS NOVAS.
         setJobs([...jobs, ...newJobs])
     }
+    function link(){
+        return jobs.link
+    } 
+console.log(link())
     return (
-        <div>
+        <div> 
             <div>
                 { 
                     jobs.map(job => {
-                        return <div style={{ border: "1px solid black", marginBottom: "10px" }}>{JSON.stringify(job)}</div>
-                    })
-                }
-                <br/>
-                <br/>
-                <button 
-                onClick={loadMoreJobs}
-                style={{ background: "red", border: "3px solid black"}}>
-                    Click here to load more jobs
+                        //<p>{JSON.stringify(job)} </p> 
+                       return(
+                            <div className='grid grid-cols-2 gap-6 py-2 px-4 border-solid border-2 border-black'>
+                                 <div className='col-span-2 bg-fuchsia-600 text-black'>{job.company} <br /></div>
+                                 <div className='bg-fuchsia-600 px-2'> {job.title} </div><br />                                
+                                 <div>
+                                      <button onClick={ link() }class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
+                                            See details
+                                      </button>
+                                </div>  
+                            </div>                            
+                        )                         
+                    })                   
+                }                 
+                <br/>                
+                <button onClick={ loadMoreJobs() } className='bg-blue-500 hover:bg-blue-700  
+                   text-center text-white font-bold py-3 px-20'>Click here to load more jobs
                 </button>
-            </div>
+            </div> 
         </div>
 
     )
