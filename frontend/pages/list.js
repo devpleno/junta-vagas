@@ -23,42 +23,43 @@ const Index = (props) => {
         // PARA CARREGAR MAIS VAGAS.
         const response = await axios.get(`http://localhost:3000/jobs?page=${nextPage}&totalItens=10`);
         const newJobs = response.data;
-
+        
         // AQUI ESTOU PEGANDO AS VAGAS QUE JÁ EXISTEM QUE SÃO UM LISTA E ADICIONANDO AS NOVAS
         // VAGAS A LISTA, QUANDO CHAMO O setJobs ISSO ADICIONA UM LISTA NOVA É O REACT.JS ATUALIZA O 
         // COMPONENTE EXIBINDO AS ANTIGAS VAGAS E AS NOVAS.
         setJobs([...jobs, ...newJobs])
-    }
-    function link(){
-        return jobs.link
-    } 
-console.log(link())
+    }      
     return (
         <div> 
             <div>
                 { 
                     jobs.map(job => {
-                        //<p>{JSON.stringify(job)} </p> 
+                        
                        return(
+                           
                             <div className='grid grid-cols-2 gap-6 py-2 px-4 border-solid border-2 border-black'>
-                                 <div className='col-span-2 bg-fuchsia-600 text-black'>{job.company} <br /></div>
-                                 <div className='bg-fuchsia-600 px-2'> {job.title} </div><br />                                
-                                 <div>
-                                      <button onClick={ link() }class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
-                                            See details
-                                      </button>
+                                 <div className='col-span-2 bg-fuchsia-600 px-2 text-black'>{ job.company } <br /></div>
+                                 <div className='bg-fuchsia-600 px-2'>{ job.title } </div><br />                                
+                                 
+                                 <div >
+                                      { jobs.map( item => 
+                                      <div className='bg-blue-500 hover:bg-blue-700 text-white font-bold rounded-full'>{item.name}<br/>
+                                      <a href= { item.link }>See datails</a></div>                                       
+                                      )}                                      
                                 </div>  
-                            </div>                            
-                        )                         
-                    })                   
-                }                 
-                <br/>                
-                <button onClick={ loadMoreJobs() } className='bg-blue-500 hover:bg-blue-700  
-                   text-center text-white font-bold py-3 px-20'>Click here to load more jobs
-                </button>
+                            </div>             
+                        )                                                 
+                    })                                                          
+                } 
+                <br/> 
+                <div className='text-center'>               
+                    <button onClick={(event) => loadMoreJobs(event) } className='bg-blue-500 hover:bg-blue-700  
+                        text-center text-white font-bold py-3 px-20 rounded-md'>
+                        Click here to load more jobs
+                    </button>
+                </div>
             </div> 
         </div>
-
     )
 }
 // CÓDIGO ABAIXO IRÁ SER EXECUTADO QUANDO CARREGAR A PÁGINA IRÁ PEGAR AS VAGA É RETORNA.
