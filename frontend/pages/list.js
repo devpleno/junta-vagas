@@ -42,10 +42,9 @@ const Index = (props) => {
                                  <div className='bg-fuchsia-600 px-2'>{ job.title } </div><br />                                
                                  
                                  <div >
-                                      { jobs.map( item => 
-                                      <div className='bg-blue-500 hover:bg-blue-700 text-white font-bold rounded-full'>{item.name}<br/>
-                                      <a href= { item.link }>See datails</a></div>                                       
-                                      )}                                      
+                                        <a href={job.link} target="_blank" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
+                                            See details
+                                        </a>                                       
                                 </div>  
                             </div>             
                         )                                                 
