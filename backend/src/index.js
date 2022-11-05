@@ -5,7 +5,6 @@ const app = express();
 
 app.use(cors('*'));
 
-
 const { connect: connectWithDB, client } = require("../src/services/db");
 
 const newsletterRouter = require("./routes/newsletter");
