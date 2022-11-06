@@ -13,10 +13,7 @@ const Header = () => {
          </div>
      <div className='bg-gray-300 p-4 shadow-md'>
             <div> 
-                  <Link href='/'>
-                      <a className='px-2 hover:underline'>Home</a>
-                  </Link>
-                  
+                                   
                 <Link href='/about'>
                     <a className='px-2 hover:underline'>About</a>
                 </Link>                
