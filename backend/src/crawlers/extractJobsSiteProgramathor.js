@@ -8,7 +8,13 @@ const extractJobs = (html) => {
   $(".cell-list > *")
     .toArray()
     .forEach((item) => {
-      const title = $(item).find("div.cell-list-content h3").text();
+      const titleEl = $(item).find("div.cell-list-content h3");
+
+      if ($(titleEl).has("span")) {
+        $(titleEl).find("span").remove();
+      }
+
+      const title = $(titleEl).text();
       const workMode = $(item)
         .find("div.cell-list-content-icon span:nth-child(2)")
         .text();
