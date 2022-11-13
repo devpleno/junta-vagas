@@ -8,7 +8,7 @@ const insertJobs = async (jobs) => {
                 workMode: current.workMode,
                 company: current.company,
                 link: current.link,
-                technologies: current.technologies,
+                technologies: current.technologies || current.requirements,
                 postedAt: current.postedAt,
                 platform: current.platform || null,
                 logo: current.logo || null
