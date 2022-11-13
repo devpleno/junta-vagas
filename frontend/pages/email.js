@@ -5,7 +5,6 @@ import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 
 const Email = () => {
-
 const [email, setEmail] = useState("");
 
 function displayMessage (status, message) {
@@ -85,4 +84,4 @@ async function registerEmailInNewsletter (evt) {
   )
 }
 
-export default Email
+export default Email;

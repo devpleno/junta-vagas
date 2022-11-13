@@ -10,10 +10,9 @@ const Layout = ({children}) => {
             <div className="container mx-auto">
                 {children} 
             </div>
-            <Footer/>
-      </div>  
-
+            <Footer />
+      </div> 
     ) 
-}
+  }
 
 export default Layout
