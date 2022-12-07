@@ -5,6 +5,7 @@ const schedule = require('node-schedule')
 const insertJobsExtractedInDb = require("./insertJobsExtractedInDb")
 const sendJobsToDiscord = require("./sendJobsToDiscord");
 const { sendJobsTodayByEmail } = require("./sendJobsTodayByEmail.js")
+const Sentry = require("../configs/Sentry")
 
 const rule = new schedule.RecurrenceRule()
 rule.hour = 23
@@ -17,13 +18,12 @@ connect()
             try {
                 await insertJobsExtractedInDb()
                 await sendJobsToDiscord();
-                await sendJobsTodayByEmail()
+                await sendJobsTodayByEmail()  
             } catch (err) {
                 console.log(err)
+                Sentry.captureException(err)  
             }
         })
+        
+        console.log(">>>>>>>>>> CRONJOBS STARTED <<<<<<<<<<<<<<")
     })
-
-
-
-

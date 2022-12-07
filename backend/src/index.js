@@ -2,6 +2,7 @@ require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
 const app = express();
+const Sentry = require("./configs/Sentry")
 
 app.use(cors('*'));
 
@@ -24,5 +25,6 @@ connectWithDB()
   })
   .catch((err) => {
     console.error(err)
+    Sentry.captureException(err)
     client.close();
   });
