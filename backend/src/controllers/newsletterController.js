@@ -33,7 +33,7 @@ async function register(req, res) {
     await insertOne("newsletters", newSub);
 
     let message = {
-      from: "newsletter@juntavagas.com.br",
+      from: process.env.EMAIL_FROM,
       to: email,
       subject: "Confirme seu e-mail",
       html: `<h1>Confirme seu e-mail</h1>
