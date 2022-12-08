@@ -14,16 +14,16 @@ rule.tz = 'America/Sao_Paulo'
 
 connect()
     .then(async () => {
-        schedule.scheduleJob(rule, async () => {
+        // schedule.scheduleJob(rule, async () => {
             try {
                 await insertJobsExtractedInDb()
                 await sendJobsToDiscord();
-                await sendJobsTodayByEmail()  
+                // await sendJobsTodayByEmail()  
             } catch (err) {
                 console.log(err)
                 Sentry.captureException(err)  
             }
-        })
+        // })
         
         console.log(">>>>>>>>>> CRONJOBS STARTED <<<<<<<<<<<<<<")
     })
