@@ -11,7 +11,7 @@ module.exports = async () => {
     extractJobsSiteFrontendBr(),
     extractJobsSiteRemoveOk(),
     extractJobsSitesBackendBr(),
-    // extractJobsSiteStartec(),
+    extractJobsSiteStartec(),
     extractJobsSiteProgramathor(),
   ]);
   const jobs = [
@@ -19,7 +19,7 @@ module.exports = async () => {
     ...results[1],
     ...results[2],
     ...results[3],
-    // ...results[4],
+    ...results[4],
   ];
   console.log("Init insertation the jobs extracted in database");
   await insertJobs(jobs);

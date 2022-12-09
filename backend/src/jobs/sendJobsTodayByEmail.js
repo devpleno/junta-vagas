@@ -26,6 +26,11 @@ const sendJobsTodayByEmail = async () => {
 
   console.log("Creating email with jobs today")
 
+  if (jobs.length === 0) {
+    console.log("Don't have jobs to notify per email")
+    return;
+  }
+
   const linkJobsHtml = jobs.map(job => {
     return `<a href=${job.link}>${job.title}</a>`
 
