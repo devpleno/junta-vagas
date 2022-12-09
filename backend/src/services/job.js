@@ -1,3 +1,4 @@
+const dayjs = require("dayjs")
 const { insertOne, client, find } = require("./db")
 
 const insertJobs = async (jobs) => {
@@ -28,19 +29,12 @@ const getJobsCollection = () => {
 }
 
 const findJobsToday = async () => {
-
-    const getToday = () => {
-        const today = new Date();
-        return today.getFullYear() + '-' + 0 + (today.getMonth() + 1) + '-' + today.getDate();
-    }
-
-    const dateFilterJobs = getToday();
+    const dateFilterJobs = dayjs().format('YYYY-MM-DD 00:00:00');
     const coll = getJobsCollection();
     const result = await coll.find({
         "postedAt":
-            { $gte: `${dateFilterJobs} 00:00:00` }
+            { $gte: dateFilterJobs }
     }).toArray();
-
     return result;
 
 }

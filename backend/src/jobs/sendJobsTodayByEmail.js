@@ -4,7 +4,7 @@ const newsletter = require("../services/newsletter")
 const email = require("../services/email")
 
 const sendJobsTodayByEmail = async () => {
-  const msgFrom = 'teste@gmail.com'
+  const msgFrom = process.env.EMAIL_FROM
   const subject = 'Vagas do dia'
   console.log("Getting jobs today")
   const jobs = await jobsToday.findJobsToday(client)
