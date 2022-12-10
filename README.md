@@ -122,13 +122,20 @@ Instruções para roda o backend na sua máquina:
 - Criar arquivo **.env** baseado no arquivo **.env.example** na raiz do diretório **backend**.
 - Deve ser adicionado o seguinte conteúdo no arquivo .env:
 ```
-DB_NAME=nome_banco_de_dados_aqui
-DB_URL=url_conexacao_banco_de_dados
-SMTP_HOST=host_do_servico_smtp_pode_usar_para_desenvolvimento_mailtrap.io
-SMTP_PORT=porta_do_servico_stmp
-SMTP_USER=usuário_servico_smtp
-SMTP_PASS=senha_usuário_servico_smtp
-URL_NEWSLETTER=endereco_onde_frontend_roda // Exemplo: http://localhost:3001
+DB_NAME=<database_name>
+DB_USER=<database_admin_username>
+DB_PASSWORD=<database_admin_password>
+DB_URL=<database_url>
+SMTP_HOST=<uri_smtp_service>
+SMTP_PORT=<port_smtp_service>
+SMTP_USER=<user_smtp_service>
+SMTP_PASS=<password_smtp_service>
+URL_NEWSLETTER=<newsletter_url>
+USERNAME_DISCORD=<username_discord>
+URL_WEBHOOK_DISCORD=<url_webhook_discord>
+
+EMAIL_FROM=<email_from>
+SENTRY_URL=<sentry_url>
 ```
 - Executar o comando **npm install** para instalar o modules necessários para o backend rodar
 - Executar o comando **npm run start:dev** que vai iniciar o servidor é mostrar uma mensagem com o endereço onde está rodando. OBS: Quando você roda esse comando ele está usando **nodemon** lib node.js que permite restart do servidor automáticamente quando fizer um alteração nos arquivos do projeto é salvar.
@@ -145,8 +152,10 @@ Instruções para roda o frontend na sua máquina:
 - Criar arquivo **.env** baseado no arquivo **.env.example** na raiz do diretório **backend**.
 - Deve ser adicionado o seguinte conteúdo no arquivo .env:
 ```
-NEXT_PUBLIC_API_URL_NEWSLETTER=url_api_backend // Exemplo: http://localhost:3000
-NEXT_PUBLIC_LINK_INVITE_DISCORD=url_link_que_nao_expira_convite_discord_
+NEXT_PUBLIC_API_URL_NEWSLETTER=<url_api_newsletter>
+NEXT_PUBLIC_API_URL=<url_api>
+API_URL=<url_api>
+NEXT_PUBLIC_LINK_INVITE_DISCORD=<link_invite_discord>
 ```
 - Executar o comando **npm install** para instalar o modules necessários para o backend rodar
 - Executar o comando **npm run dev** que vai iniciar o servidor é mostrar uma mensagem com o endereço onde está rodando.
