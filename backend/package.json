@@ -4,10 +4,10 @@
   "description": "",
   "main": "./src/index.js",
   "scripts": {
-    "start": "node ./src/index.js",
+    "start": "pm2 start ./src/index.js --name api",
     "start:dev": "nodemon ./src/index.js",
     "jobs:dev": "nodemon ./src/jobs/index.js",
-    "jobs": "node ./src/jobs/index.js"
+    "jobs": "pm2 start ./src/jobs/index.js --name jobs"
   },
   "keywords": [],
   "author": "",
