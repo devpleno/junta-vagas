@@ -143,7 +143,7 @@ SENTRY_URL=<sentry_url>
 - (Opcional) Executar o comando **docker-compose up -d** para criar um container docker com o mongodb para você. OBS: isso ser você tiver docker instalado na sua máquina é conhece a tecnologia, caso não, apenas ignore isso comando.
 
 
-Instruções para roda o backend em produção:
+Instruções para rodar o backend em produção:
 ==============================================
 
 - Clonar o projeto
