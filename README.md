@@ -143,6 +143,34 @@ SENTRY_URL=<sentry_url>
 - (Opcional) Executar o comando **docker-compose up -d** para criar um container docker com o mongodb para você. OBS: isso ser você tiver docker instalado na sua máquina é conhece a tecnologia, caso não, apenas ignore isso comando.
 
 
+Instruções para roda o backend em produção:
+==============================================
+
+- Clonar o projeto
+- Acessar o diretório **backend**
+- Criar arquivo **.env** baseado no arquivo **.env.example** na raiz do diretório **backend**.
+- Deve ser adicionado o seguinte conteúdo no arquivo .env:
+```
+DB_NAME=<database_name>
+DB_USER=<database_admin_username>
+DB_PASSWORD=<database_admin_password>
+DB_URL=<database_url>
+SMTP_HOST=<uri_smtp_service>
+SMTP_PORT=<port_smtp_service>
+SMTP_USER=<user_smtp_service>
+SMTP_PASS=<password_smtp_service>
+URL_NEWSLETTER=<newsletter_url>
+USERNAME_DISCORD=<username_discord>
+URL_WEBHOOK_DISCORD=<url_webhook_discord>
+
+EMAIL_FROM=<email_from>
+SENTRY_URL=<sentry_url>
+```
+- Executar o command **npm install -g pm2** que é o pacote para gerenciar processo node.js em produção.
+- Executar o comando **npm install** para instalar o modules necessários para o backend rodar
+- Executar o comando **npm run start** vai criar um processo com o pm2 que inicia servidor é mostrar uma mensagem com o endereço onde está rodando.
+- Executar o comando **npm run jobs** vai criar um processo com o pm2 para rodar os jobs que são a tarefas que são executadas em um determinado horário sem a necessidade da interação de uma pessoa.
+
 
 Instruções para roda o frontend na sua máquina:
 ==============================================
